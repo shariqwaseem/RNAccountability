@@ -9,7 +9,7 @@ interface ListComponentProps {
 const ListComponent = ({entry}: ListComponentProps) => {
   return (
     <View style={styles.mainContainer}>
-      <CText>ListComponent {entry?.id} </CText>
+      <CText>List Component {entry?.id} </CText>
     </View>
   );
 };

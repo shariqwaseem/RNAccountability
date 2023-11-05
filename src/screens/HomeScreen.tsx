@@ -10,16 +10,19 @@ import ListComponent from '../components/HomeScreen/ListComponent';
 import {EntryType} from '../types/EntryType';
 import colorPalette from '../theme/colors';
 import {FAB} from '@rneui/themed';
-import {TextStyles} from '../components/CText';
+import CText, {TextStyles} from '../components/CText';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/RootStackParamList';
+import {useAppSelector} from '../hooks/reduxHooks';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({navigation}: Props) => {
   const [data] = useState<EntryType[]>([{id: '1'}, {id: '2'}]);
+  const data2 = useAppSelector(state => state.entries.entries);
   return (
     <View style={styles.mainContainer}>
+      <CText>{JSON.stringify(data2)}</CText>
       <FlatList
         ItemSeparatorComponent={
           Platform.OS !== 'android'
@@ -32,7 +35,8 @@ const HomeScreen = ({navigation}: Props) => {
         }
         data={data}
         renderItem={({item, index, separators}) => (
-          <TouchableOpacity onPress={() => navigation.navigate('ViewEntry')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ViewEntry', {title: item.id})}>
             <ListComponent entry={item} />
           </TouchableOpacity>
         )}
