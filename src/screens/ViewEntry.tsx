@@ -1,22 +1,52 @@
-import {View, StyleSheet} from 'react-native';
-import React from 'react';
+import {View, StyleSheet, ScrollView, FlatList, Platform} from 'react-native';
+import React, {useCallback, useState} from 'react';
 import CText from '../components/CText';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/RootStackParamList';
 import SummaryText from '../components/ViewEntry/SummaryText';
+import HistoryChart from '../components/ViewEntry/HistoryChart';
+import palette from '../theme/colors';
+import HistoryListItem from '../components/ViewEntry/HistoryListItem';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ViewEntry'>;
 
 const ViewEntry = (props: Props) => {
+  const [data] = useState(new Array(100));
+  const Header = useCallback(() => {
+    return (
+      <>
+        <SummaryText
+          render={() => <CText>You have 2 orders remaining</CText>}
+          style={styles.remainingTextContainer}
+        />
+        <SummaryText
+          render={() => <CText>You can resume on 11/23/123</CText>}
+          style={styles.resumeActivityContainer}
+        />
+        <HistoryChart />
+        <CText style={styles.header} as="P2">
+          History
+        </CText>
+      </>
+    );
+  }, []);
   return (
     <View style={styles.mainContainer}>
-      <SummaryText
-        render={() => <CText>You have 2 orders remaining</CText>}
-        style={styles.remainingTextContainer}
-      />
-      <SummaryText
-        render={() => <CText>You can resume on 11/23/123</CText>}
-        style={styles.resumeActivityContainer}
+      <FlatList
+        ListHeaderComponent={Header}
+        ListFooterComponent={<View style={styles.footer} />}
+        data={data}
+        style={styles.subPadding}
+        ItemSeparatorComponent={
+          Platform.OS !== 'android'
+            ? ({highlighted}) => (
+                <View
+                  style={[styles.separator, highlighted && {marginLeft: 0}]}
+                />
+              )
+            : null
+        }
+        renderItem={({item, index, separators}) => <HistoryListItem />}
       />
     </View>
   );
@@ -25,15 +55,25 @@ const styles = StyleSheet.create({
   mainContainer: {
     display: 'flex',
     flex: 1,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+  },
+  subPadding: {
+    paddingHorizontal: 12,
+  },
+  footer: {
+    marginBottom: 20,
   },
   remainingTextContainer: {
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 10,
   },
   resumeActivityContainer: {
     marginTop: 10,
+  },
+  separator: {backgroundColor: palette.greyLight, height: 1},
+  header: {
+    marginTop: 20,
+    marginBottom: 8,
+    color: palette.grey,
   },
 });
 export default ViewEntry;

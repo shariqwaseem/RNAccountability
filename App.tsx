@@ -21,9 +21,16 @@ function App(): JSX.Element {
           }}>
           <RootStack.Group>
             <RootStack.Screen name="Home" component={HomeScreen} />
+            <RootStack.Screen
+              options={({navigation, route}) => ({
+                title: `View Entry ${route.params.title}`,
+              })}
+              name="ViewEntry"
+              component={ViewEntry}
+            />
           </RootStack.Group>
           <RootStack.Group screenOptions={{presentation: 'modal'}}>
-            <RootStack.Screen
+            {/* <RootStack.Screen
               options={({navigation, route}) => ({
                 title: `View Entry ${route.params.title}`,
                 headerLeft: () => (
@@ -34,7 +41,7 @@ function App(): JSX.Element {
               })}
               name="ViewEntry"
               component={ViewEntry}
-            />
+            /> */}
           </RootStack.Group>
         </RootStack.Navigator>
       </NavigationContainer>

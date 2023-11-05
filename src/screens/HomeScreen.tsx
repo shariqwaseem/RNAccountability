@@ -22,7 +22,6 @@ const HomeScreen = ({navigation}: Props) => {
   const data2 = useAppSelector(state => state.entries.entries);
   return (
     <View style={styles.mainContainer}>
-      <CText>{JSON.stringify(data2)}</CText>
       <FlatList
         ItemSeparatorComponent={
           Platform.OS !== 'android'
