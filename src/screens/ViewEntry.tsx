@@ -7,6 +7,7 @@ import SummaryText from '../components/ViewEntry/SummaryText';
 import HistoryChart from '../components/ViewEntry/HistoryChart';
 import palette from '../theme/colors';
 import HistoryListItem from '../components/ViewEntry/HistoryListItem';
+import CButton from '../components/CButton';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ViewEntry'>;
 
@@ -30,11 +31,19 @@ const ViewEntry = (props: Props) => {
       </>
     );
   }, []);
+  const Footer = useCallback(() => {
+    return (
+      <View style={styles.footer}>
+        <CButton color="secondary">Remove entry</CButton>
+      </View>
+    );
+  }, []);
+
   return (
     <View style={styles.mainContainer}>
       <FlatList
         ListHeaderComponent={Header}
-        ListFooterComponent={<View style={styles.footer} />}
+        ListFooterComponent={<Footer />}
         data={data}
         style={styles.subPadding}
         ItemSeparatorComponent={
@@ -60,6 +69,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   footer: {
+    marginTop: 20,
     marginBottom: 20,
   },
   remainingTextContainer: {

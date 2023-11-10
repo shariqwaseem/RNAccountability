@@ -42,6 +42,7 @@ const HomeScreen = ({navigation}: Props) => {
       />
       <FAB
         visible={true}
+        onPress={() => navigation.navigate('AddItem')}
         titleStyle={{...TextStyles.H3}}
         placement="right"
         title="Add"

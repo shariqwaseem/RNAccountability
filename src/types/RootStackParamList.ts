@@ -4,4 +4,5 @@ interface ViewEntryProps {
 export type RootStackParamList = {
   Home: undefined;
   ViewEntry: ViewEntryProps;
+  AddItem: undefined;
 };

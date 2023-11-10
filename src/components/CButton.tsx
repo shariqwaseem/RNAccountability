@@ -4,14 +4,14 @@ import {Button, ButtonProps} from '@rneui/base';
 import {TextStyles} from './CText';
 
 interface Props extends ButtonProps {
-  variant?: 'small' | 'medium' | 'large';
+  titleSize?: 'small' | 'medium' | 'large';
 }
 
-const CButton = ({variant = 'medium', children, ...props}: Props) => {
+const CButton = ({titleSize = 'medium', children, ...props}: Props) => {
   let style = styles.titleMedium;
-  if (variant === 'large') {
+  if (titleSize === 'large') {
     style = styles.titleLarge;
-  } else if (variant === 'small') {
+  } else if (titleSize === 'small') {
     style = styles.titleSmall;
   }
 
