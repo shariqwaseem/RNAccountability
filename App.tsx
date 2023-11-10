@@ -5,10 +5,11 @@ import HomeScreen from './src/screens/HomeScreen';
 import CText, {TextStyles} from './src/components/CText';
 import {RootStackParamList} from './src/types/RootStackParamList';
 import CButton from './src/components/CButton';
-import ViewEntry from './src/screens/ViewEntry';
+import ViewEntry from './src/screens/ViewItem';
 import {store} from './src/store';
 import {Provider} from 'react-redux';
-import AddItem from './src/screens/AddItem';
+import AddItem from './src/screens/AddItem/AddItem';
+import ViewItem from './src/screens/ViewItem';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -36,8 +37,8 @@ function App(): JSX.Element {
                   );
                 },
               })}
-              name="ViewEntry"
-              component={ViewEntry}
+              name="ViewItem"
+              component={ViewItem}
             />
           </RootStack.Group>
           <RootStack.Group screenOptions={{presentation: 'modal'}}>
@@ -46,7 +47,12 @@ function App(): JSX.Element {
                 title: 'Add Item',
                 headerLeft: () => (
                   <CButton type="clear" onPress={() => navigation.goBack()}>
-                    Close
+                    Cancel
+                  </CButton>
+                ),
+                headerRight: () => (
+                  <CButton type="clear" onPress={() => {}}>
+                    Save
                   </CButton>
                 ),
               })}

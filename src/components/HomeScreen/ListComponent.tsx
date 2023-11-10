@@ -1,15 +1,15 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {EntryType} from '../../types/EntryType';
+import {ItemType} from '../../types/ItemType';
 import CText from '../CText';
 
 interface ListComponentProps {
-  entry: EntryType;
+  item: ItemType;
 }
-const ListComponent = ({entry}: ListComponentProps) => {
+const ListComponent = ({item}: ListComponentProps) => {
   return (
     <View style={styles.mainContainer}>
-      <CText>List Component {entry?.id} </CText>
+      <CText>{JSON.stringify(item)}</CText>
     </View>
   );
 };

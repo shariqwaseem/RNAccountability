@@ -3,6 +3,6 @@ interface ViewEntryProps {
 }
 export type RootStackParamList = {
   Home: undefined;
-  ViewEntry: ViewEntryProps;
+  ViewItem: ViewEntryProps;
   AddItem: undefined;
 };

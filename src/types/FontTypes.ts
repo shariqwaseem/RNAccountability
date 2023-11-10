@@ -15,4 +15,4 @@ export type FontType =
   | 'Regular'
   | 'Semi Bold'
   | 'Semi Bold Italic';
-export type TextType = 'H1' | 'H2' | 'H3' | 'H4' | 'P1' | 'P2' | 'P3';
+export type TextType = 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'P1' | 'P2' | 'P3';

@@ -3,15 +3,15 @@ import React, {useCallback, useState} from 'react';
 import CText from '../components/CText';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types/RootStackParamList';
-import SummaryText from '../components/ViewEntry/SummaryText';
-import HistoryChart from '../components/ViewEntry/HistoryChart';
+import SummaryText from '../components/ViewItem/SummaryText';
+import HistoryChart from '../components/ViewItem/HistoryChart';
 import palette from '../theme/colors';
-import HistoryListItem from '../components/ViewEntry/HistoryListItem';
+import HistoryListItem from '../components/ViewItem/HistoryListItem';
 import CButton from '../components/CButton';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'ViewEntry'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'ViewItem'>;
 
-const ViewEntry = (props: Props) => {
+const ViewItem = (props: Props) => {
   const [data] = useState(new Array(100));
   const Header = useCallback(() => {
     return (
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
     color: palette.grey,
   },
 });
-export default ViewEntry;
+export default ViewItem;

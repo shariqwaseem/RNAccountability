@@ -1,9 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../../store';
+import {EntryType} from '../../types/EntryType';
 
 // Define a type for the slice state
 interface EntriesState {
-  entries: unknown[];
+  entries: EntryType[];
 }
 
 // Define the initial state using that type
@@ -16,7 +17,7 @@ export const counterSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    addEntry: (state, action: PayloadAction<EntriesState>) => {
+    addEntry: (state, action: PayloadAction<EntryType>) => {
       state.entries = [...state.entries, action.payload];
     },
     removeEntry: state => {

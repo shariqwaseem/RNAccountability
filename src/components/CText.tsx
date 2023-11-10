@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
     fontFamily: PRIMARY_FONT_BOLD,
     fontSize: 14,
   },
+  H5: {
+    fontFamily: PRIMARY_FONT_BOLD,
+    fontSize: 10,
+  },
   P1: {
     fontFamily: PRIMARY_FONT_REGULAR,
     fontSize: 16,
